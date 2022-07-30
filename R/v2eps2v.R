@@ -14,6 +14,16 @@ V2eps = function(V, type)
   #convert to epsilon, eq. 1 of Theta Probe user manual, p.12
   if (type=="Theta Probe polynomial")
     return(c(eps = (1.07 + 6.4*V-6.4*V^2+4.7*V^3 )^2))
+    
+  #SMT-100 probe
+  #converts counts to permittivity, eq. 3 of Bogenas Calibration paper, p.6 (with own parameters)
+  if (type=="SMT100")
+    return(c(eps = 1.834833 + 1/(-0.1306667+(0.2548333/((18000-V)/5000))) ))
+           
+  #CS654-L TDR probe
+  #no transformation necessary, since data is already displayed as permittivity
+   if (type=="CL654-L")
+     return(c(eps = V)))
   
   #theta-probe, lookup values reconstructed from table p. 14
   #converted to epsilon, eq. 1 of Theta Probe user manual, p.12
@@ -24,7 +34,7 @@ V2eps = function(V, type)
   
     #return(c(eps = V))
   
-  stop("type must be 'PR2', 'Theta Probe' or 'Theta Probe polynomial'.")
+  stop("type must be 'PR2', 'Theta Probe', 'SMT', 'CL654-L', or 'Theta Probe polynomial'.")
 }
 
 
