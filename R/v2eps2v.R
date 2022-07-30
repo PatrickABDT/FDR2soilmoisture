@@ -23,7 +23,7 @@ V2eps = function(V, type)
   #CS654-L TDR probe
   #no transformation necessary, since data is already displayed as permittivity
    if (type=="CL654-L")
-     return(c(eps = V)))
+     return(c(eps = V))
   
   #theta-probe, lookup values reconstructed from table p. 14
   #converted to epsilon, eq. 1 of Theta Probe user manual, p.12
